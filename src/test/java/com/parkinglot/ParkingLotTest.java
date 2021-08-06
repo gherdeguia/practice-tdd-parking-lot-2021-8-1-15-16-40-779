@@ -78,10 +78,9 @@ public class ParkingLotTest {
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = parkingLot.parkCar(firstCar);
-        ParkingTicket usedParkingTicket = new ParkingTicket();
+        parkingLot.fetchCar(parkingTicket01);
 
         //given
-        Car returnedCar01 = parkingLot.fetchCar(parkingTicket01);
         Car returnedCar02 = parkingLot.fetchCar(parkingTicket01);
 
         //then
@@ -91,7 +90,7 @@ public class ParkingLotTest {
     @Test
     void should_return_null_when_fetch_car_given_full_parking_lot_and_car() {
         //when
-        ParkingLot parkingLot = new ParkingLot(10);
+        ParkingLot parkingLot = new ParkingLot(10,10);
         Car firstCar = new Car();
 
         //given
@@ -99,5 +98,21 @@ public class ParkingLotTest {
 
         //then
         assertNull(parkingTicket);
+    }
+
+    @Test
+    void should_return_error_message_when_fetch_car_given_parking_lot_and_unrecognized_ticket() {
+        //when
+        ParkingLot parkingLot = new ParkingLot();
+        Car firstCar = new Car();
+
+        ParkingTicket parkingTicket01 = parkingLot.parkCar(firstCar);
+        ParkingTicket parkingTicket02 = new ParkingTicket();
+
+        //given
+        Car returnedCar01 = parkingLot.fetchCar(parkingTicket02);
+
+        //then
+        assertEquals(returnedCar01,"Unrecognized parking ticket.");
     }
 }

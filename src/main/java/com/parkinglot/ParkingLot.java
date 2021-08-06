@@ -7,22 +7,24 @@ public class ParkingLot {
 
     public Car car;
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
-    private final int maxCapacity = 10;
+    private int maxCapacity = 10;
     private int currentCapacity = 0;
 
     public ParkingLot(){
 
     }
-    public ParkingLot(int maxCapacity){
-        this.currentCapacity = maxCapacity;
+    public ParkingLot(int maxCapacity,int currentCapacity){
+        this.maxCapacity = maxCapacity;
+        this.currentCapacity = currentCapacity;
     }
 
     public ParkingTicket parkCar(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
         this.car = car;
 
-        if(!fullParkingLotCapacity()){
+        if(!isFullParkingLotCapacity()){
             this.parkPositions.put(parkingTicket,car);
+            this.currentCapacity++;
             return parkingTicket;
         }
         return null;
@@ -32,20 +34,14 @@ public class ParkingLot {
         if(findParkingTicketExists(parkingTicket)){
             this.car = this.parkPositions.get(parkingTicket);
             this.parkPositions.remove(parkingTicket);
+            this.currentCapacity--;
             return this.car;
         }
         return null;
     }
 
-    public ParkingTicket checkCorrectParkingTicket(ParkingTicket parkingTicket){
-        if(this.parkPositions.containsKey(parkingTicket)){
-            return parkingTicket;
-        }
-        return null;
-    }
-
-    public boolean fullParkingLotCapacity(){
-        if(this.currentCapacity == this.maxCapacity){
+    public boolean isFullParkingLotCapacity(){
+        if(this.currentCapacity >= this.maxCapacity){
             return true;
         }
         return false;
