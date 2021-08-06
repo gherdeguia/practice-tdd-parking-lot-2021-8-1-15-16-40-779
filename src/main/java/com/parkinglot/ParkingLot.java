@@ -30,27 +30,32 @@ public class ParkingLot {
         return null;
     }
 
-    public Car fetchCar(ParkingTicket parkingTicket) {
-        if(findParkingTicketExists(parkingTicket)){
-            this.car = this.parkPositions.get(parkingTicket);
-            this.parkPositions.remove(parkingTicket);
-            this.currentCapacity--;
-            return this.car;
+    public Car fetchCar(ParkingTicket parkingTicket) throws UnrecognizedParkingTicketException {
+        if(isUnrecognizedTicket(parkingTicket)){
+            throw new UnrecognizedParkingTicketException();
         }
-        return null;
+        this.car = this.parkPositions.get(parkingTicket);
+        this.parkPositions.remove(parkingTicket);
+        this.currentCapacity--;
+        return this.car;
+
+//        if(findParkingTicketExists(parkingTicket)){
+//            this.car = this.parkPositions.get(parkingTicket);
+//            this.parkPositions.remove(parkingTicket);
+//            this.currentCapacity--;
+//            return this.car;
+//        }
+//        return null;
     }
 
-    public boolean isFullParkingLotCapacity(){
-        if(this.currentCapacity >= this.maxCapacity){
-            return true;
-        }
-        return false;
+    private boolean isFullParkingLotCapacity(){
+        return this.currentCapacity >= this.maxCapacity;
+    }
+    private boolean isUnrecognizedTicket(ParkingTicket parkingTicket){
+        return !this.parkPositions.containsKey(parkingTicket);
     }
 
-    public boolean findParkingTicketExists(ParkingTicket parkingTicket){
-        if(this.parkPositions.containsKey(parkingTicket)){
-            return true;
-        }
-        return false;
+    private boolean findParkingTicketExists(ParkingTicket parkingTicket){
+        return this.parkPositions.containsKey(parkingTicket);
     }
 }

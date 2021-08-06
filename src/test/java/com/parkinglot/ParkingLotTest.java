@@ -62,11 +62,18 @@ public class ParkingLotTest {
         ParkingTicket parkingTicket01 = parkingLot.parkCar(firstCar);
         ParkingTicket parkingTicket02 = new ParkingTicket();
 
+//        //given
+//        Car returnedCar01 = parkingLot.fetchCar(parkingTicket02);
+//
+//        //then
+//        assertNull(returnedCar01);
+
+        //Changed the assert statement to accomodate the code change
         //given
-        Car returnedCar01 = parkingLot.fetchCar(parkingTicket02);
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetchCar(parkingTicket02));
 
         //then
-        assertNull(returnedCar01);
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
 
@@ -80,11 +87,18 @@ public class ParkingLotTest {
         ParkingTicket parkingTicket01 = parkingLot.parkCar(firstCar);
         parkingLot.fetchCar(parkingTicket01);
 
+//        //given
+//        Car returnedCar02 = parkingLot.fetchCar(parkingTicket01);
+//
+//        //then
+//        assertNull(returnedCar02);
+
+        //Changed the assert statement to accomodate the code change
         //given
-        Car returnedCar02 = parkingLot.fetchCar(parkingTicket01);
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetchCar(parkingTicket01));
 
         //then
-        assertNull(returnedCar02);
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 
     @Test
@@ -107,12 +121,12 @@ public class ParkingLotTest {
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = parkingLot.parkCar(firstCar);
-        ParkingTicket parkingTicket02 = new ParkingTicket();
+        ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
 
         //given
-        Car returnedCar01 = parkingLot.fetchCar(parkingTicket02);
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetchCar(unrecognizedParkingTicket));
 
         //then
-        assertEquals(returnedCar01,"Unrecognized parking ticket.");
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 }
