@@ -14,8 +14,12 @@ public class ParkingLot {
         ParkingTicket parkingTicket = new ParkingTicket();
         this.car = car;
 
-        this.parkPositions.put(parkingTicket,car);
-        return parkingTicket;
+        if(!parkingLotCapacity()){
+
+            this.parkPositions.put(parkingTicket,car);
+            return parkingTicket;
+        }
+        return null;
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
