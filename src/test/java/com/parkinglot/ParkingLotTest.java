@@ -148,7 +148,7 @@ public class ParkingLotTest {
     }
 
     @Test
-    void should_return_error_message_when_fetch_car_given_parking_lot_and_full_capacity_ticket() {
+    void should_return_error_message_when_fetch_car_given_parking_lot_and_full_capacity_parking() {
         //when
         ParkingLot parkingLot = new ParkingLot(10,10);
         Car firstCar = new Car();
