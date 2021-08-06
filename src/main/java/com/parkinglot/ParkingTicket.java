@@ -4,4 +4,8 @@ public class ParkingTicket {
     public ParkingTicket(Car car) {
 
     }
+
+    public ParkingTicket() {
+
+    }
 }
