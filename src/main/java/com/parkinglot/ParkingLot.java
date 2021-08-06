@@ -7,6 +7,8 @@ public class ParkingLot {
 
     public Car car;
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
+    private final int maxCapacity = 10;
+    private int currentCapacity = 10;
 
     public ParkingTicket parkCar(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
@@ -17,7 +19,12 @@ public class ParkingLot {
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
-        return parkPositions.get(parkingTicket);
+
+        parkPositions.remove(parkingTicket);
+        if(findParkingTicketExists(parkingTicket)){
+            return parkPositions.get(parkingTicket);
+        }
+        return null;
     }
 
     public ParkingTicket checkCorrectParkingTicket(ParkingTicket parkingTicket){
@@ -27,7 +34,7 @@ public class ParkingLot {
         return null;
     }
 
-    public boolean checkParkingTicketExists(ParkingTicket parkingTicket){
+    public boolean findParkingTicketExists(ParkingTicket parkingTicket){
         if(parkPositions.containsKey(parkingTicket)){
             return true;
         }
