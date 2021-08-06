@@ -88,4 +88,17 @@ public class ParkingLotTest {
         //then
         assertNull(returnedCar01);
     }
+
+    @Test
+    void should_return_null_when_fetch_car_given_full_parking_lot_and_car() {
+        //when
+        ParkingLot parkingLot = new ParkingLot();
+        Car firstCar = new Car();
+
+        //given
+        ParkingTicket parkingTicket = parkingLot.parkCar(firstCar);
+
+        //then
+        assertNull(parkingTicket);
+    }
 }

@@ -14,28 +14,35 @@ public class ParkingLot {
         ParkingTicket parkingTicket = new ParkingTicket();
         this.car = car;
 
-        parkPositions.put(parkingTicket,car);
+        this.parkPositions.put(parkingTicket,car);
         return parkingTicket;
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
 
-        parkPositions.remove(parkingTicket);
+        this.parkPositions.remove(parkingTicket);
         if(findParkingTicketExists(parkingTicket)){
-            return parkPositions.get(parkingTicket);
+            return this.parkPositions.get(parkingTicket);
         }
         return null;
     }
 
     public ParkingTicket checkCorrectParkingTicket(ParkingTicket parkingTicket){
-        if(parkPositions.containsKey(parkingTicket)){
+        if(this.parkPositions.containsKey(parkingTicket)){
             return parkingTicket;
         }
         return null;
     }
 
+    public boolean parkingLotCapacity(){
+        if(this.currentCapacity == this.maxCapacity){
+            return true;
+        }
+        return false;
+    }
+
     public boolean findParkingTicketExists(ParkingTicket parkingTicket){
-        if(parkPositions.containsKey(parkingTicket)){
+        if(this.parkPositions.containsKey(parkingTicket)){
             return true;
         }
         return false;
