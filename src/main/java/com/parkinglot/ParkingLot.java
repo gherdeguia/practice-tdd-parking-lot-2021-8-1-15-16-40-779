@@ -4,12 +4,12 @@ public class ParkingLot {
 
     public Car car;
 
-    public ParkingTicket park(Car car) {
+    public ParkingTicket parkCar(Car car) {
         this.car = car;
         return new ParkingTicket(car);
     }
 
-    public Car fetch(ParkingTicket parkingTicket) {
+    public Car fetchCar(ParkingTicket parkingTicket) {
         return this.car;
     }
 }
