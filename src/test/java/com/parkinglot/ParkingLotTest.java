@@ -52,9 +52,6 @@ public class ParkingLotTest {
         assertEquals(secondCar, returnedCar02);
     }
 
-//    GIVEN a parking lot, and a wrong parking ticket
-//    WHEN fetch the car
-//    THEN return null
 
     @Test
     void should_return_null_when_fetch_cars_given_parking_lot_and_wrong_parking_tickets() {
@@ -81,18 +78,20 @@ public class ParkingLotTest {
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = parkingLot.parkCar(firstCar);
+        ParkingTicket usedParkingTicket = new ParkingTicket();
 
         //given
         Car returnedCar01 = parkingLot.fetchCar(parkingTicket01);
+        Car returnedCar02 = parkingLot.fetchCar(parkingTicket01);
 
         //then
-        assertNull(returnedCar01);
+        assertNull(returnedCar02);
     }
 
     @Test
     void should_return_null_when_fetch_car_given_full_parking_lot_and_car() {
         //when
-        ParkingLot parkingLot = new ParkingLot();
+        ParkingLot parkingLot = new ParkingLot(10);
         Car firstCar = new Car();
 
         //given
