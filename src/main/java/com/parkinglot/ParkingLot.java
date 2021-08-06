@@ -9,5 +9,7 @@ public class ParkingLot {
         return new ParkingTicket(car);
     }
 
-
+    public Car fetch(Car car) {
+        return null;
+    }
 }
