@@ -22,7 +22,8 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
-        return null;
+        this.car = this.parkPositions.get(parkingTicket);
+        return this.car;
     }
 
 }
