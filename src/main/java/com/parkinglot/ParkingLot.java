@@ -1,7 +1,13 @@
 package com.parkinglot;
 
 public class ParkingLot {
+
+    public Car car;
+
     public ParkingTicket park(Car car) {
-        return null;
+        this.car = car;
+        return new ParkingTicket(car);
     }
+
+
 }
