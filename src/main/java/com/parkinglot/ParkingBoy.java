@@ -13,9 +13,16 @@ public class ParkingBoy {
         this.parkingLot = parkingLot;
     }
 
-    public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
-        return null;
+    public ParkingTicket parkCar(Car car) {
+        ParkingTicket parkingTicket = new ParkingTicket();
+        this.car = car;
+        this.parkPositions.put(parkingTicket, car);
+        return parkingTicket;
 
+    }
+
+    public Car fetchCar(ParkingTicket parkingTicket) {
+        return null;
     }
 
 }
