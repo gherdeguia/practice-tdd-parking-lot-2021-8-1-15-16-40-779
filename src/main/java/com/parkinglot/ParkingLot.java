@@ -6,18 +6,18 @@ import java.util.Map;
 public class ParkingLot {
 
     public Car car;
-    private Map<ParkingTicket, Car> parkPosition = new HashMap<>();
+    private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
 
     public ParkingTicket parkCar(Car car) {
         ParkingTicket parkingTicket = new ParkingTicket();
-        parkPosition.put(parkingTicket,car);
+        parkPositions.put(parkingTicket,car);
         return parkingTicket;
     }
 
 
 
     public Car fetchCar(ParkingTicket parkingTicket) {
-        return parkPosition.get(parkingTicket);
+        return parkPositions.get(parkingTicket);
 
     }
 }
