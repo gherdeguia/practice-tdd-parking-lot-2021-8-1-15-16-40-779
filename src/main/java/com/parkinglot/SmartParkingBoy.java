@@ -5,9 +5,6 @@ import java.util.*;
 public class SmartParkingBoy extends ParkingBoy{
 
     private List<ParkingLot> parkingLots;
-    private ParkingLot parkingLot;
-    public Car car;
-    private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
 
     public SmartParkingBoy(List<ParkingLot> parkingLots){
         super(parkingLots);
