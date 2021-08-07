@@ -9,6 +9,9 @@ public class ParkingBoy {
     public Car car;
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
 
+    public ParkingBoy() {
+
+    }
     public ParkingBoy(List<ParkingLot> parkingLots){ this.parkingLots = parkingLots; }
 
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
