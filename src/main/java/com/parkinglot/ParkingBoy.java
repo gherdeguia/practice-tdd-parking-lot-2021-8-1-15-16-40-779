@@ -9,11 +9,15 @@ public class ParkingBoy {
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
 
 
+
     public ParkingBoy(ParkingLot parkingLot){
         this.parkingLot = parkingLot;
     }
 
-    public ParkingTicket parkCar(Car car) {
+    public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
+        if (isFullParkingLotCapacity()) {
+            throw new NoAvailablePositionException();
+        }
         ParkingTicket parkingTicket = new ParkingTicket();
         this.car = car;
         this.parkPositions.put(parkingTicket, car);
@@ -32,6 +36,10 @@ public class ParkingBoy {
 
     private boolean isUnrecognizedTicket(ParkingTicket parkingTicket) {
         return !this.parkPositions.containsKey(parkingTicket);
+    }
+
+    private boolean isFullParkingLotCapacity() {
+        return parkingLot.getCurrentParkingLotCapacity() >= this.parkingLot.getMaxParkingCapacity();
     }
 
 }

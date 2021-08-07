@@ -73,7 +73,7 @@ public class ParkingBoyTest {
     @Test
     void should_return_error_message_when_fetch_car_given_parking_lot_and_full_capacity_parking() {
         //when
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10,10));
         Car firstCar = new Car();
 
         //given

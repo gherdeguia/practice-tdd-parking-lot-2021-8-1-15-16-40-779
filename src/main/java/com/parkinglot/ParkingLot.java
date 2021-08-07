@@ -52,4 +52,12 @@ public class ParkingLot {
     private boolean findParkingTicketExists(ParkingTicket parkingTicket) {
         return this.parkPositions.containsKey(parkingTicket);
     }
+
+    public int getCurrentParkingLotCapacity(){
+        return this.currentCapacity;
+    }
+
+    public int getMaxParkingCapacity(){
+        return this.maxCapacity;
+    }
 }
