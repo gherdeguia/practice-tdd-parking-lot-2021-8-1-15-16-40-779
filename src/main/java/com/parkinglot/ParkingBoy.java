@@ -26,6 +26,7 @@ public class ParkingBoy {
             throw new UnrecognizedParkingTicketException();
         }
         this.car = this.parkPositions.get(parkingTicket);
+
         return this.car;
     }
 
