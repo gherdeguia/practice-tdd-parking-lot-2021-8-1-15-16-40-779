@@ -175,7 +175,7 @@ public class ParkingBoyTest {
         //when
         List<ParkingLot> parkingLots =
                 Arrays.asList(
-                        new ParkingLot(10,1),
+                        new ParkingLot(10,9),
                         new ParkingLot(10,1)
                 );
         ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
@@ -193,5 +193,26 @@ public class ParkingBoyTest {
         //then
         assertEquals(firstCar, returnedCar01);
         assertEquals(secondCar, returnedCar02);
+    }
+
+    @Test
+    void should_return_error_message_when_fetch_car_given_two_parking_lots_and_unrecognized_ticket() {
+        //when
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                        new ParkingLot(10,9),
+                        new ParkingLot(10,1)
+                );
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car firstCar = new Car();
+
+        ParkingTicket parkingTicket01 = parkingBoy.parkCar(firstCar);
+        ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
+
+        //given
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingBoy.fetchCar(unrecognizedParkingTicket));
+
+        //then
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 }
