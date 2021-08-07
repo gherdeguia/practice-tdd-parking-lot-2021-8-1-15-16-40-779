@@ -29,6 +29,7 @@ public class ParkingLot {
         this.car = car;
         this.parkPositions.put(parkingTicket, car);
         this.currentCapacity++;
+        this.displayParkingCapacity();
         return parkingTicket;
 
     }
@@ -49,6 +50,14 @@ public class ParkingLot {
 
     boolean hasAvailableParkingSlot(){
         return this.currentCapacity < this.maxCapacity;
+    }
+
+    int returnCurrentCapacity(){
+        return this.currentCapacity;
+    }
+
+    public void displayParkingCapacity(){
+        System.out.println(String.format("Current Parking Capacity: %d",this.returnCurrentCapacity()));
     }
 
     private boolean isUnrecognizedTicket(ParkingTicket parkingTicket) {
