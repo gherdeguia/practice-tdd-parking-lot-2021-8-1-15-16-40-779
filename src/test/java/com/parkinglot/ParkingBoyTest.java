@@ -9,11 +9,11 @@ public class ParkingBoyTest {
     @Test
     void should_return_ticket_when_parked_car_given_parking_lot_and_car() {
         //when
-        ParkingBoy pBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         Car car = new Car();
 
         //given
-        ParkingTicket parkingTicket = pBoy.parkCar(car);;
+        ParkingTicket parkingTicket = parkingBoy.parkCar(car);;
 
         //then
         assertNotNull(parkingTicket);
@@ -22,16 +22,16 @@ public class ParkingBoyTest {
     @Test
     void should_return_correct_car_when_park_two_cars_given_parking_lot_and_two_parking_tickets() {
         //when
-        ParkingBoy pBoy = new ParkingBoy(new ParkingLot());
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         Car firstCar = new Car();
         Car secondCar = new Car();
 
-        ParkingTicket parkingTicket01 = pBoy.parkCar(firstCar);
-        ParkingTicket parkingTicket02 = pBoy.parkCar(secondCar);
+        ParkingTicket parkingTicket01 = parkingBoy.parkCar(firstCar);
+        ParkingTicket parkingTicket02 = parkingBoy.parkCar(secondCar);
 
         //given
-        Car returnedCar01 = pBoy.fetchCar(parkingTicket01);
-        Car returnedCar02 = pBoy.fetchCar(parkingTicket02);
+        Car returnedCar01 = parkingBoy.fetchCar(parkingTicket01);
+        Car returnedCar02 = parkingBoy.fetchCar(parkingTicket02);
 
         //then
         assertEquals(firstCar, returnedCar01);
