@@ -13,13 +13,8 @@ public class ParkingBoy {
     public ParkingBoy(ParkingLot parkingLot){
         this.parkingLot = parkingLot;
     }
-    public ParkingBoy(List<ParkingLot> parkingLots){
-        this.parkingLots = parkingLots;
-    }
-
-    public ParkingBoy() {
-
-    }
+    public ParkingBoy(List<ParkingLot> parkingLots){ this.parkingLots = parkingLots; }
+    public ParkingBoy() {    }
 
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
         return findAvailableParkingLot().parkCar(car);
@@ -34,25 +29,32 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
-        if (isUnrecognizedTicket(parkingTicket)) {
-            throw new UnrecognizedParkingTicketException();
-        }
-        this.car = this.parkPositions.get(parkingTicket);
-        this.parkPositions.remove(parkingTicket);
-        return this.car;
+        return findWhereParkingLotAndCar(parkingTicket).fetchCar(parkingTicket);
+//        if (isUnrecognizedTicket(parkingTicket)) {
+//            throw new UnrecognizedParkingTicketException();
+//        }
+//        this.car = this.parkPositions.get(parkingTicket);
+//        this.parkPositions.remove(parkingTicket);
+//        return this.car;
     }
 
-    private boolean isUnrecognizedTicket(ParkingTicket parkingTicket) {
-        return !this.parkPositions.containsKey(parkingTicket);
-    }
-
-    private boolean isFullParkingLotCapacity() {
-        return parkingLot.getCurrentParkingLotCapacity() >= this.parkingLot.getMaxParkingCapacity();
-    }
+//    private boolean isUnrecognizedTicket(ParkingTicket parkingTicket) {
+//        return !this.parkPositions.containsKey(parkingTicket);
+//    }
+//
+//    private boolean isFullParkingLotCapacity() {
+//        return parkingLot.getCurrentParkingLotCapacity() >= this.parkingLot.getMaxParkingCapacity();
+//    }
 
     private ParkingLot findAvailableParkingLot(){
         return parkingLots.stream().filter(ParkingLot::hasAvailableParkingSlot).findFirst()
                 .orElseThrow(NoAvailablePositionException::new);
+    }
+
+    private ParkingLot findWhereParkingLotAndCar(ParkingTicket parkingTicket){
+        return parkingLots.stream().filter(parkingLot -> parkingLot.findParkingTicketExists(parkingTicket))
+                .findFirst()
+                .orElseThrow(UnrecognizedParkingTicketException::new);
     }
 
 }

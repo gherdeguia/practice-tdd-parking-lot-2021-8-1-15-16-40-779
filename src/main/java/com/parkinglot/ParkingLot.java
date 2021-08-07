@@ -53,7 +53,7 @@ public class ParkingLot {
         return !this.parkPositions.containsKey(parkingTicket);
     }
 
-    private boolean findParkingTicketExists(ParkingTicket parkingTicket) {
+    boolean findParkingTicketExists(ParkingTicket parkingTicket) {
         return this.parkPositions.containsKey(parkingTicket);
     }
 

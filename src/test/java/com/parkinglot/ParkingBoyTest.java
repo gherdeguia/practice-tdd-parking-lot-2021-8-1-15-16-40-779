@@ -12,7 +12,11 @@ public class ParkingBoyTest {
     @Test
     void should_return_ticket_when_parked_car_given_parking_lot_and_car() {
         //when
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                        new ParkingLot(9,1)
+                );
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car car = new Car();
 
         //given
@@ -25,7 +29,11 @@ public class ParkingBoyTest {
     @Test
     void should_return_correct_car_when_park_two_cars_given_parking_lot_and_two_parking_tickets() {
         //when
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                        new ParkingLot(9,1)
+                );
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car firstCar = new Car();
         Car secondCar = new Car();
 
@@ -44,7 +52,11 @@ public class ParkingBoyTest {
     @Test
     void should_return_error_message_when_fetch_car_given_parking_lot_and_unrecognized_ticket() {
         //when
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                        new ParkingLot(9,1)
+                );
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = parkingBoy.parkCar(firstCar);
@@ -60,7 +72,11 @@ public class ParkingBoyTest {
     @Test
     void should_return_error_message_when_fetch_car_given_parking_lot_and_used_parking_ticket() {
         //when
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                        new ParkingLot(9,1)
+                );
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = parkingBoy.parkCar(firstCar);
@@ -76,7 +92,11 @@ public class ParkingBoyTest {
     @Test
     void should_return_error_message_when_fetch_car_given_parking_lot_and_full_capacity_parking() {
         //when
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot(10,10));
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                        new ParkingLot(9,9)
+                );
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given
