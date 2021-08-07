@@ -1,6 +1,7 @@
 package com.parkinglot;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 public class ParkingLotManager extends ParkingBoy{
 
@@ -19,8 +20,8 @@ public class ParkingLotManager extends ParkingBoy{
         this.smartParkingBoy = new SmartParkingBoy(parkingLots);
     }
 
-    public ManagementList getParkingBoysList() {
-        return this.managementList.;
+    public List<ParkingBoy> getParkingBoysList() {
+        return this.managementList.getManagementList();
     }
 
     public ParkingTicket makeParkingBoyPark(Car car){

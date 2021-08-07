@@ -23,26 +23,31 @@ public class ParkingLotManagerTest {
 
         ParkingBoy parkingBoy1 = new ParkingBoy(parkingLotsA);
         ParkingBoy parkingBoy2 = new ParkingBoy(parkingLotsA);
+
+        List<ParkingBoy> parkingBoys =
+                Arrays.asList(
+                        parkingBoy1,
+                        parkingBoy2
+                );
+
         SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLotsA);
         Car firstCar = new Car();
         Car secondCar = new Car();
         Car thirdCar = new Car();
 
         //given
-        ManagementList managementList = new ManagementList();
-        managementList.addParkingBoy(parkingBoy1);
-        managementList.addParkingBoy(parkingBoy2);
+        ManagementList managementList = new ManagementList(parkingBoys);
         managementList.addParkingBoy(smartParkingBoy1);
 
-        ParkingLotManager parkingLotManager = new ParkingLotManager(parkingLotsA,managementList);
-        ManagementList managementParkingBoyList = parkingLotManager.getParkingBoysList();
+        ParkingLotManager parkingLotManager = new ParkingLotManager(parkingLotsA, managementList);
+        List<ParkingBoy> managementParkingBoyList = parkingLotManager.getParkingBoysList();
 
         ParkingTicket parkingTicket1 = parkingLotManager.parkCar(firstCar);
         ParkingTicket parkingTicket2 = parkingLotManager.makeParkingBoyPark(secondCar);
         ParkingTicket parkingTicket3 = parkingLotManager.makeSmartParkingBoyPark(thirdCar);
-        System.out.println(managementList);
 
         //then
+        System.out.print(managementParkingBoyList);
         assertNotNull(managementParkingBoyList);
         assertNotNull(parkingTicket1);
         assertNotNull(parkingTicket2);
