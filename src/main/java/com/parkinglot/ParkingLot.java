@@ -41,6 +41,7 @@ public class ParkingLot {
         this.car = this.parkPositions.get(parkingTicket);
         this.parkPositions.remove(parkingTicket);
         this.currentCapacity--;
+        this.displayParkingCapacity();
         return this.car;
     }
 
