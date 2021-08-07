@@ -13,7 +13,6 @@ public class ParkingBoy {
     public ParkingBoy(ParkingLot parkingLot){
         this.parkingLot = parkingLot;
     }
-
     public ParkingBoy(List<ParkingLot> parkingLots){
         this.parkingLots = parkingLots;
     }
@@ -23,13 +22,14 @@ public class ParkingBoy {
     }
 
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
-        if (isFullParkingLotCapacity()) {
-            throw new NoAvailablePositionException();
-        }
-        ParkingTicket parkingTicket = new ParkingTicket();
-        this.car = car;
-        this.parkPositions.put(parkingTicket, car);
-        return parkingTicket;
+        return findAvailableParkingLot().parkCar(car);
+//        if (isFullParkingLotCapacity()) {
+//            throw new NoAvailablePositionException();
+//        }
+//        ParkingTicket parkingTicket = new ParkingTicket();
+//        this.car = car;
+//        this.parkPositions.put(parkingTicket, car);
+//        return parkingTicket;
 
     }
 
@@ -48,6 +48,11 @@ public class ParkingBoy {
 
     private boolean isFullParkingLotCapacity() {
         return parkingLot.getCurrentParkingLotCapacity() >= this.parkingLot.getMaxParkingCapacity();
+    }
+
+    private ParkingLot findAvailableParkingLot(){
+        return parkingLots.stream().filter(ParkingLot::hasAvailableParkingSlot).findFirst()
+                .orElseThrow(NoAvailablePositionException::new);
     }
 
 }

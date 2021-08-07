@@ -41,8 +41,12 @@ public class ParkingLot {
         return this.car;
     }
 
-    private boolean isFullParkingLotCapacity() {
+    boolean isFullParkingLotCapacity() {
         return this.currentCapacity >= this.maxCapacity;
+    }
+
+    boolean hasAvailableParkingSlot(){
+        return this.currentCapacity < this.maxCapacity;
     }
 
     private boolean isUnrecognizedTicket(ParkingTicket parkingTicket) {
@@ -59,5 +63,9 @@ public class ParkingLot {
 
     public int getMaxParkingCapacity(){
         return this.maxCapacity;
+    }
+
+    public boolean hasAvailableParkingSlot(ParkingLot parkingLot) {
+        return this.currentCapacity < this.maxCapacity;
     }
 }

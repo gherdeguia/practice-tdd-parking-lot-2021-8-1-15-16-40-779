@@ -12,13 +12,7 @@ public class ParkingBoyTest {
     @Test
     void should_return_ticket_when_parked_car_given_parking_lot_and_car() {
         //when
-        List<ParkingLot> parkingLots =
-                Arrays.asList(
-                    new ParkingLot(10,0),
-                    new ParkingLot(0,0)
-                );
-
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
         Car car = new Car();
 
         //given
@@ -91,4 +85,27 @@ public class ParkingBoyTest {
         //then
         assertEquals("No available position.", exception.getMessage());
     }
+
+    //STORY 4
+
+    @Test
+    void should_return_ticket_when_parked_car_given_two_parking_lots_and_car() {
+        //when
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                        new ParkingLot(9,1),
+                        new ParkingLot(10,0)
+                );
+
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car car = new Car();
+
+        //given
+        ParkingTicket parkingTicket = parkingBoy.parkCar(car);
+
+        //then
+        assertNotNull(parkingTicket);
+    }
+
+
 }
