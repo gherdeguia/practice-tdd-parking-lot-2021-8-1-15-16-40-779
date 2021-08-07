@@ -17,7 +17,6 @@ public class SmartParkingBoyTest {
                         new ParkingLot(10,6),
                         new ParkingLot(10,1)
                 );
-        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
