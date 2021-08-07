@@ -2,6 +2,9 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
+import java.util.Arrays;
+import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingBoyTest {
@@ -9,11 +12,17 @@ public class ParkingBoyTest {
     @Test
     void should_return_ticket_when_parked_car_given_parking_lot_and_car() {
         //when
-        ParkingBoy parkingBoy = new ParkingBoy(new ParkingLot());
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                    new ParkingLot(10,0),
+                    new ParkingLot(0,0)
+                );
+
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
         Car car = new Car();
 
         //given
-        ParkingTicket parkingTicket = parkingBoy.parkCar(car);;
+        ParkingTicket parkingTicket = parkingBoy.parkCar(car);
 
         //then
         assertNotNull(parkingTicket);

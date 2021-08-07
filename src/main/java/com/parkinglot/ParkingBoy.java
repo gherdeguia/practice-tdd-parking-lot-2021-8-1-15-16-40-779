@@ -1,17 +1,25 @@
 package com.parkinglot;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParkingBoy {
     private ParkingLot parkingLot;
+    private List<ParkingLot> parkingLots;
     public Car car;
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
 
-
-
     public ParkingBoy(ParkingLot parkingLot){
         this.parkingLot = parkingLot;
+    }
+
+    public ParkingBoy(List<ParkingLot> parkingLots){
+        this.parkingLots = parkingLots;
+    }
+
+    public ParkingBoy() {
+
     }
 
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
