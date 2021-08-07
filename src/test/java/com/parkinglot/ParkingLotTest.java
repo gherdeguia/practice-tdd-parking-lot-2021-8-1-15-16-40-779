@@ -62,12 +62,6 @@ public class ParkingLotTest {
         ParkingTicket parkingTicket01 = parkingLot.parkCar(firstCar);
         ParkingTicket parkingTicket02 = new ParkingTicket();
 
-//        //given
-//        Car returnedCar01 = parkingLot.fetchCar(parkingTicket02);
-//
-//        //then
-//        assertNull(returnedCar01);
-
         //Changed the assert statement to accommodate the code change
         //given
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLot.fetchCar(parkingTicket02));
@@ -86,12 +80,6 @@ public class ParkingLotTest {
 
         ParkingTicket parkingTicket01 = parkingLot.parkCar(firstCar);
         parkingLot.fetchCar(parkingTicket01);
-
-//        //given
-//        Car returnedCar02 = parkingLot.fetchCar(parkingTicket01);
-//
-//        //then
-//        assertNull(returnedCar02);
 
         //Changed the assert statement to accommodate the code change
         //given
