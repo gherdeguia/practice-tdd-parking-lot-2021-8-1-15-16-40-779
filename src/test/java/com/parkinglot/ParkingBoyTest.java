@@ -150,4 +150,23 @@ public class ParkingBoyTest {
         assertEquals(firstCar, returnedCar01);
         assertEquals(secondCar, returnedCar02);
     }
+
+    @Test
+    void should_return_parking_ticket_when_park_car_given_two_parking_lot_and_full_parking_on_parking_lot_1() {
+        //when
+        List<ParkingLot> parkingLots =
+                Arrays.asList(
+                        new ParkingLot(10,10),
+                        new ParkingLot(10,1)
+                );
+        ParkingBoy parkingBoy = new ParkingBoy(parkingLots);
+        Car firstCar = new Car();
+
+        //given
+        ParkingTicket parkingTicket01 = parkingBoy.parkCar(firstCar);
+
+
+        //then
+        assertNotNull(parkingTicket01);
+    }
 }

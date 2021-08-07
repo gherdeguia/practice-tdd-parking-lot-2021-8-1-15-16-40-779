@@ -7,7 +7,8 @@ public class ParkingLot {
 
     public Car car;
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
-    private int maxCapacity = 10;
+    private final int defaultCapacity = 10;
+    private int maxCapacity = 0;
     private int currentCapacity = 0;
 
     public ParkingLot() {
