@@ -2,11 +2,10 @@ package com.parkinglot;
 
 import org.junit.jupiter.api.Test;
 
-import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class ParkingLotManagerTest {
 
@@ -23,14 +22,14 @@ public class ParkingLotManagerTest {
 
         ParkingBoy parkingBoy1 = new ParkingBoy(parkingLotsA);
         ParkingBoy parkingBoy2 = new ParkingBoy(parkingLotsA);
+        SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLotsA);
 
         List<ParkingBoy> parkingBoys =
                 Arrays.asList(
                         parkingBoy1,
-                        parkingBoy2
+                        parkingBoy2,
+                        smartParkingBoy1
                 );
-
-        SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLotsA);
         Car firstCar = new Car();
         Car secondCar = new Car();
         Car thirdCar = new Car();
@@ -45,6 +44,8 @@ public class ParkingLotManagerTest {
         ParkingTicket parkingTicket1 = parkingLotManager.parkCar(firstCar);
         ParkingTicket parkingTicket2 = parkingLotManager.makeParkingBoyPark(secondCar);
         ParkingTicket parkingTicket3 = parkingLotManager.makeSmartParkingBoyPark(thirdCar);
+        ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLotManager.makeParkingBoyFetchCar(unrecognizedParkingTicket));
 
         //then
         System.out.print(managementParkingBoyList);
@@ -52,5 +53,6 @@ public class ParkingLotManagerTest {
         assertNotNull(parkingTicket1);
         assertNotNull(parkingTicket2);
         assertNotNull(parkingTicket3);
+        assertEquals("Unrecognized parking ticket.", exception.getMessage());
     }
 }

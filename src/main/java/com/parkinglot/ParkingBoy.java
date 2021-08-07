@@ -22,12 +22,12 @@ public class ParkingBoy {
         return findWhereParkingLotAndCar(parkingTicket).fetchCar(parkingTicket);
     }
 
-    private ParkingLot findAvailableParkingLot(){
+    public ParkingLot findAvailableParkingLot(){
         return parkingLots.stream().filter(ParkingLot::hasAvailableParkingSlot).findFirst()
                 .orElseThrow(NoAvailablePositionException::new);
     }
 
-    private ParkingLot findWhereParkingLotAndCar(ParkingTicket parkingTicket){
+    public ParkingLot findWhereParkingLotAndCar(ParkingTicket parkingTicket){
         return parkingLots.stream().filter(parkingLot -> parkingLot.findParkingTicketExists(parkingTicket))
                 .findFirst()
                 .orElseThrow(UnrecognizedParkingTicketException::new);
