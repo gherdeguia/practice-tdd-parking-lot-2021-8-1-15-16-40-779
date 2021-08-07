@@ -56,6 +56,10 @@ public class ParkingLot {
         return this.currentCapacity;
     }
 
+    int returnCurrentCapacityRatio(){
+        return this.currentCapacity / this.maxCapacity;
+    }
+
     public void displayParkingCapacity(){
         System.out.println(String.format("Current Parking Capacity: %d",this.returnCurrentCapacity()));
     }

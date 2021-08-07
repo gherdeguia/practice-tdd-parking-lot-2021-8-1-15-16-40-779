@@ -13,8 +13,8 @@ public class SuperSmartParkingBoyTest {
         //when
         List<ParkingLot> parkingLots =
                 Arrays.asList(
-                        new ParkingLot(15,6),
-                        new ParkingLot(10,4)
+                        new ParkingLot(15,12),
+                        new ParkingLot(20,15)
                 );
 
         SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
