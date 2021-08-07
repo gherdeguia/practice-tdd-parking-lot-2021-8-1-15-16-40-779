@@ -56,16 +56,4 @@ public class ParkingLot {
     boolean findParkingTicketExists(ParkingTicket parkingTicket) {
         return this.parkPositions.containsKey(parkingTicket);
     }
-
-    public int getCurrentParkingLotCapacity(){
-        return this.currentCapacity;
-    }
-
-    public int getMaxParkingCapacity(){
-        return this.maxCapacity;
-    }
-
-    public boolean hasAvailableParkingSlot(ParkingLot parkingLot) {
-        return this.currentCapacity < this.maxCapacity;
-    }
 }
