@@ -30,4 +30,8 @@ public class ParkingBoy {
                 .orElseThrow(UnrecognizedParkingTicketException::new);
     }
 
+    public List<ParkingLot> getParkingLots(){
+        return this.parkingLots;
+    }
+
 }

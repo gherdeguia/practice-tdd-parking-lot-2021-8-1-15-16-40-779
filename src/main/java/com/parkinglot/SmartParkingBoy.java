@@ -1,38 +1,27 @@
 package com.parkinglot;
 
-import java.util.Comparator;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
-public class SmartParkingBoy {
+public class SmartParkingBoy extends ParkingBoy{
 
     private List<ParkingLot> parkingLots;
+    private ParkingLot parkingLot;
     public Car car;
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
 
-    public SmartParkingBoy(List<ParkingLot> parkingLots){ this.parkingLots = parkingLots; }
+    public SmartParkingBoy(List<ParkingLot> parkingLots){ super(parkingLots); parkingLots = super.getParkingLots();}
 
+    @Override
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
-        return findAvailableParkingLot().parkCar(car);
+        return findMoreSpaciousParkingLot().parkCar(car);
     }
 
-    public Car fetchCar(ParkingTicket parkingTicket) {
-        return findWhereParkingLotAndCar(parkingTicket).fetchCar(parkingTicket);
-    }
+//    @Override
+//    public Car fetchCar(ParkingTicket parkingTicket) {
+//        return findWhereParkingLotAndCar(parkingTicket).fetchCar(parkingTicket);
+//    }
 
-    private ParkingLot findAvailableParkingLot(){
-        return parkingLots.stream().filter(ParkingLot::hasAvailableParkingSlot).findFirst()
-                .orElseThrow(NoAvailablePositionException::new);
-    }
-    private ParkingLot findMoreSpaceParkingLot(){
-        return parkingLots.stream().max(Comparator.comparing(ParkingLot::returnCurrentCapacity))
-                .orElseThrow(NoAvailablePositionException::new);
-    }
-
-    private ParkingLot findWhereParkingLotAndCar(ParkingTicket parkingTicket){
-        return parkingLots.stream().filter(parkingLot -> parkingLot.findParkingTicketExists(parkingTicket))
-                .findFirst()
-                .orElseThrow(UnrecognizedParkingTicketException::new);
+    private ParkingLot findMoreSpaciousParkingLot(){
+        return this.parkingLots.stream().min(Comparator.comparing(ParkingLot::returnCurrentCapacity)).get();
     }
 }

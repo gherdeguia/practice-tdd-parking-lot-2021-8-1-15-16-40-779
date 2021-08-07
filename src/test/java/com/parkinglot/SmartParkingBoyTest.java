@@ -24,7 +24,6 @@ public class SmartParkingBoyTest {
         //given
         ParkingTicket parkingTicket01 = smartParkingBoy.parkCar(firstCar);
 
-
         //then
         assertNotNull(parkingTicket01);
     }
