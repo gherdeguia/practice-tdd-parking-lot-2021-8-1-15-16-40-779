@@ -22,8 +22,15 @@ public class ParkingBoy {
     }
 
     public Car fetchCar(ParkingTicket parkingTicket) {
+        if (isUnrecognizedTicket(parkingTicket)) {
+            throw new UnrecognizedParkingTicketException();
+        }
         this.car = this.parkPositions.get(parkingTicket);
         return this.car;
+    }
+
+    private boolean isUnrecognizedTicket(ParkingTicket parkingTicket) {
+        return !this.parkPositions.containsKey(parkingTicket);
     }
 
 }
