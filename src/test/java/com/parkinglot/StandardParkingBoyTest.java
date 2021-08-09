@@ -6,44 +6,24 @@ import java.util.Arrays;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
-import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SuperSmartParkingBoyTest {
+public class StandardParkingBoyTest {
+
     @Test
-    void should_return_parking_ticket_when_park_car_given_two_parking_lot_and_park_car_on_parking_lot_with_more_available_space_ratio() {
+    void should_return_ticket_when_parked_car_given_parking_lot_and_car() {
         //when
         List<ParkingLot> parkingLots =
                 Arrays.asList(
-                        new ParkingLot(15,12),
-                        new ParkingLot(20,15)
+                        new ParkingLot(9,1)
                 );
-
-        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
-        Car firstCar = new Car();
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
+        Car car = new Car();
 
         //given
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
+        ParkingTicket parkingTicket = standardParkingBoy.parkCar(car);
 
         //then
-        assertNotNull(parkingTicket01);
-    }
-
-    @Test
-    void should_return_parking_ticket_when_park_car_given_two_parking_lot_and_park_car_on_parking_lot_with_more_available_space() {
-        //when
-        List<ParkingLot> parkingLots =
-                Arrays.asList(
-                        new ParkingLot(10,6),
-                        new ParkingLot(10,1)
-                );
-        SmartParkingBoy superSmartParkingBoy = new SmartParkingBoy(parkingLots);
-        Car firstCar = new Car();
-
-        //given
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
-
-        //then
-        assertNotNull(parkingTicket01);
+        assertNotNull(parkingTicket);
     }
 
     @Test
@@ -53,16 +33,16 @@ public class SuperSmartParkingBoyTest {
                 Arrays.asList(
                         new ParkingLot(9,1)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
         Car secondCar = new Car();
 
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
-        ParkingTicket parkingTicket02 = superSmartParkingBoy.parkCar(secondCar);
+        ParkingTicket parkingTicket01 = standardParkingBoy.parkCar(firstCar);
+        ParkingTicket parkingTicket02 = standardParkingBoy.parkCar(secondCar);
 
         //given
-        Car returnedCar01 = superSmartParkingBoy.fetchCar(parkingTicket01);
-        Car returnedCar02 = superSmartParkingBoy.fetchCar(parkingTicket02);
+        Car returnedCar01 = standardParkingBoy.fetchCar(parkingTicket01);
+        Car returnedCar02 = standardParkingBoy.fetchCar(parkingTicket02);
 
         //then
         assertEquals(firstCar, returnedCar01);
@@ -76,14 +56,14 @@ public class SuperSmartParkingBoyTest {
                 Arrays.asList(
                         new ParkingLot(9,1)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
 
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
+        ParkingTicket parkingTicket01 = standardParkingBoy.parkCar(firstCar);
         ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
 
         //given
-        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> superSmartParkingBoy.fetchCar(unrecognizedParkingTicket));
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> standardParkingBoy.fetchCar(unrecognizedParkingTicket));
 
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -96,14 +76,14 @@ public class SuperSmartParkingBoyTest {
                 Arrays.asList(
                         new ParkingLot(9,1)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
 
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
-        superSmartParkingBoy.fetchCar(parkingTicket01);
+        ParkingTicket parkingTicket01 = standardParkingBoy.parkCar(firstCar);
+        standardParkingBoy.fetchCar(parkingTicket01);
 
         //given
-        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> superSmartParkingBoy.fetchCar(parkingTicket01));
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> standardParkingBoy.fetchCar(parkingTicket01));
 
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -116,11 +96,11 @@ public class SuperSmartParkingBoyTest {
                 Arrays.asList(
                         new ParkingLot(9,9)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given
-        Exception exception = assertThrows(NoAvailablePositionException.class, () -> superSmartParkingBoy.parkCar(firstCar));
+        Exception exception = assertThrows(NoAvailablePositionException.class, () -> standardParkingBoy.parkCar(firstCar));
 
         //then
         assertEquals("No available position.", exception.getMessage());
@@ -137,11 +117,11 @@ public class SuperSmartParkingBoyTest {
                         new ParkingLot(10,0)
                 );
 
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car car = new Car();
 
         //given
-        ParkingTicket parkingTicket = superSmartParkingBoy.parkCar(car);
+        ParkingTicket parkingTicket = standardParkingBoy.parkCar(car);
 
         //then
         assertNotNull(parkingTicket);
@@ -155,16 +135,16 @@ public class SuperSmartParkingBoyTest {
                         new ParkingLot(9,1),
                         new ParkingLot(10,0)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
         Car secondCar = new Car();
 
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
-        ParkingTicket parkingTicket02 = superSmartParkingBoy.parkCar(secondCar);
+        ParkingTicket parkingTicket01 = standardParkingBoy.parkCar(firstCar);
+        ParkingTicket parkingTicket02 = standardParkingBoy.parkCar(secondCar);
 
         //given
-        Car returnedCar01 = superSmartParkingBoy.fetchCar(parkingTicket01);
-        Car returnedCar02 = superSmartParkingBoy.fetchCar(parkingTicket02);
+        Car returnedCar01 = standardParkingBoy.fetchCar(parkingTicket01);
+        Car returnedCar02 = standardParkingBoy.fetchCar(parkingTicket02);
 
         //then
         assertEquals(firstCar, returnedCar01);
@@ -179,11 +159,11 @@ public class SuperSmartParkingBoyTest {
                         new ParkingLot(10,10),
                         new ParkingLot(10,1)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
+        ParkingTicket parkingTicket01 = standardParkingBoy.parkCar(firstCar);
 
 
         //then
@@ -198,16 +178,16 @@ public class SuperSmartParkingBoyTest {
                         new ParkingLot(10,9),
                         new ParkingLot(10,1)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
         Car secondCar = new Car();
 
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
-        ParkingTicket parkingTicket02 = superSmartParkingBoy.parkCar(secondCar);
+        ParkingTicket parkingTicket01 = standardParkingBoy.parkCar(firstCar);
+        ParkingTicket parkingTicket02 = standardParkingBoy.parkCar(secondCar);
 
         //given
-        Car returnedCar01 = superSmartParkingBoy.fetchCar(parkingTicket01);
-        Car returnedCar02 = superSmartParkingBoy.fetchCar(parkingTicket02);
+        Car returnedCar01 = standardParkingBoy.fetchCar(parkingTicket01);
+        Car returnedCar02 = standardParkingBoy.fetchCar(parkingTicket02);
 
 
         //then
@@ -223,14 +203,14 @@ public class SuperSmartParkingBoyTest {
                         new ParkingLot(10,9),
                         new ParkingLot(10,1)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
 
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
+        ParkingTicket parkingTicket01 = standardParkingBoy.parkCar(firstCar);
         ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
 
         //given
-        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> superSmartParkingBoy.fetchCar(unrecognizedParkingTicket));
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> standardParkingBoy.fetchCar(unrecognizedParkingTicket));
 
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -244,14 +224,14 @@ public class SuperSmartParkingBoyTest {
                         new ParkingLot(10,1),
                         new ParkingLot(10,5)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
 
-        ParkingTicket parkingTicket01 = superSmartParkingBoy.parkCar(firstCar);
-        superSmartParkingBoy.fetchCar(parkingTicket01);
+        ParkingTicket parkingTicket01 = standardParkingBoy.parkCar(firstCar);
+        standardParkingBoy.fetchCar(parkingTicket01);
 
         //given
-        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> superSmartParkingBoy.fetchCar(parkingTicket01));
+        Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> standardParkingBoy.fetchCar(parkingTicket01));
 
         //then
         assertEquals("Unrecognized parking ticket.", exception.getMessage());
@@ -265,11 +245,11 @@ public class SuperSmartParkingBoyTest {
                         new ParkingLot(10,10),
                         new ParkingLot(10,10)
                 );
-        ParkingBoy superSmartParkingBoy = new ParkingBoy(parkingLots);
+        StandardParkingBoy standardParkingBoy = new StandardParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given
-        Exception exception = assertThrows(NoAvailablePositionException.class, () -> superSmartParkingBoy.parkCar(firstCar));
+        Exception exception = assertThrows(NoAvailablePositionException.class, () -> standardParkingBoy.parkCar(firstCar));
 
         //then
         assertEquals("No available position.", exception.getMessage());

@@ -2,13 +2,10 @@ package com.parkinglot;
 
 import java.util.*;
 
-public class SmartParkingBoy extends ParkingBoy{
+public class SmartStandardParkingBoy extends StandardParkingBoy {
 
-    private List<ParkingLot> parkingLots;
-
-    public SmartParkingBoy(List<ParkingLot> parkingLots){
+    public SmartStandardParkingBoy(List<ParkingLot> parkingLots){
         super(parkingLots);
-        this.parkingLots = super.getParkingLots();
     }
 
     @Override

@@ -7,7 +7,7 @@ public class ParkingLot {
 
     public Car car;
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
-    private final int defaultCapacity = 10;
+    private final static int defaultCapacity = 10;
     private int maxCapacity;
     private int currentCapacity;
 
@@ -62,7 +62,7 @@ public class ParkingLot {
     }
 
     public void displayParkingCapacity(){
-        System.out.println(String.format("Current Parking Capacity: %d",this.returnCurrentCapacity()));
+        System.out.println(String.format("Current Parking Capacity: %d / %d",this.returnCurrentCapacity(), this.maxCapacity));
     }
 
     private boolean isUnrecognizedTicket(ParkingTicket parkingTicket) {

@@ -4,12 +4,12 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public abstract class ParkingBoy {
+public class StandardParkingBoy {
     protected List<ParkingLot> parkingLots;
     public Car car;
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
 
-    public ParkingBoy(List<ParkingLot> parkingLots){ this.parkingLots = parkingLots; }
+    public StandardParkingBoy(List<ParkingLot> parkingLots){ this.parkingLots = parkingLots; }
 
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
         return findAvailableParkingLot().parkCar(car);
@@ -29,4 +29,5 @@ public abstract class ParkingBoy {
                 .findFirst()
                 .orElseThrow(UnrecognizedParkingTicketException::new);
     }
+
 }

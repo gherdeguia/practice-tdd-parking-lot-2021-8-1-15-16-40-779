@@ -18,16 +18,14 @@ public class ParkingLotManagerTest {
                         new ParkingLot(20,15),
                         new ParkingLot(15,1)
                 );
+        StandardParkingBoy standardParkingBoy1 = new StandardParkingBoy(parkingLotsA);
+        StandardParkingBoy standardParkingBoy2 = new StandardParkingBoy(parkingLotsA);
+        SmartStandardParkingBoy smartParkingBoy1 = new SmartStandardParkingBoy(parkingLotsA);
 
-
-        ParkingBoy parkingBoy1 = new ParkingBoy(parkingLotsA);
-        ParkingBoy parkingBoy2 = new ParkingBoy(parkingLotsA);
-        SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLotsA);
-
-        List<ParkingBoy> parkingBoys =
+        List<StandardParkingBoy> standardParkingBoys =
                 Arrays.asList(
-                        parkingBoy1,
-                        parkingBoy2,
+                        standardParkingBoy1,
+                        standardParkingBoy2,
                         smartParkingBoy1
                 );
         Car firstCar = new Car();
@@ -35,21 +33,22 @@ public class ParkingLotManagerTest {
         Car thirdCar = new Car();
 
         //given
-        ManagementList managementList = new ManagementList(parkingBoys);
+        ManagementList managementList = new ManagementList(standardParkingBoys);
         managementList.addParkingBoy(smartParkingBoy1);
 
-        ParkingLotManager parkingLotManager = new ParkingLotManager(parkingLotsA, managementList);
-        List<ParkingBoy> managementParkingBoyList = parkingLotManager.getParkingBoysList();
+        StandardParkingLotManager parkingLotManager = new StandardParkingLotManager(parkingLotsA, managementList);
+        List<StandardParkingBoy> managementStandardParkingBoyList = parkingLotManager.getParkingBoysList();
 
         ParkingTicket parkingTicket1 = parkingLotManager.parkCar(firstCar);
         ParkingTicket parkingTicket2 = parkingLotManager.makeParkingBoyPark(secondCar);
         ParkingTicket parkingTicket3 = parkingLotManager.makeSmartParkingBoyPark(thirdCar);
         ParkingTicket unrecognizedParkingTicket = new ParkingTicket();
         Exception exception = assertThrows(UnrecognizedParkingTicketException.class, () -> parkingLotManager.makeParkingBoyFetchCar(unrecognizedParkingTicket));
+        Car returnedCar01 = parkingLotManager.makeSmartParkingBoyFetchCar(parkingTicket2);
 
         //then
-        System.out.print(managementParkingBoyList);
-        assertNotNull(managementParkingBoyList);
+        System.out.print(managementStandardParkingBoyList);
+        assertNotNull(managementStandardParkingBoyList);
         assertNotNull(parkingTicket1);
         assertNotNull(parkingTicket2);
         assertNotNull(parkingTicket3);

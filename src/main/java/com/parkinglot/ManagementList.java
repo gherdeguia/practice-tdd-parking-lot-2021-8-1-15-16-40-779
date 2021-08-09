@@ -1,23 +1,22 @@
 package com.parkinglot;
 
 
-import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 
 public class ManagementList {
 
-    private List<ParkingBoy> managementList;
+    private List<StandardParkingBoy> managementList;
 
-    public ManagementList(List<ParkingBoy> parkingBoys) {
-        this.managementList = parkingBoys;
+    public ManagementList(List<StandardParkingBoy> standardParkingBoys) {
+        this.managementList = standardParkingBoys;
     }
 
-    public void addParkingBoy(ParkingBoy parkingBoy) {
+    public void addParkingBoy(StandardParkingBoy standardParkingBoy) {
 
     }
 
-    public List<ParkingBoy> getManagementList() {
+    public List<StandardParkingBoy> getManagementList() {
         return this.managementList.stream().collect(Collectors.toList());
     }
 }
