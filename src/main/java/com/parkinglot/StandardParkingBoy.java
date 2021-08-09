@@ -4,12 +4,11 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-public class StandardParkingBoy {
-    protected List<ParkingLot> parkingLots;
-    public Car car;
-    private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
+public class StandardParkingBoy extends ParkingBoy{
 
-    public StandardParkingBoy(List<ParkingLot> parkingLots){ this.parkingLots = parkingLots; }
+    public StandardParkingBoy(List<ParkingLot> parkingLots){
+        super(parkingLots);
+    }
 
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
         return findAvailableParkingLot().parkCar(car);
