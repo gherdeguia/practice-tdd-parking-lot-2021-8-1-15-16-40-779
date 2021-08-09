@@ -1,6 +1,8 @@
 package com.parkinglot;
 
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 public class ParkingLot {
@@ -9,7 +11,6 @@ public class ParkingLot {
     private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
     private final static int defaultCapacity = 10;
     private int maxCapacity;
-    private int currentCapacity;
 
     public ParkingLot() {
         this.maxCapacity = defaultCapacity;
@@ -77,4 +78,6 @@ public class ParkingLot {
             }
         }
     }
+
+
 }
