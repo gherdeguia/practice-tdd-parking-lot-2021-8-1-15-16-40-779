@@ -73,9 +73,10 @@ public class ParkingLot {
     }
 
     public void autoFillCapacity(int currentCapacity){
-        if(currentCapacity < this.parkPositions.size()){
-            while(currentCapacity < this.parkPositions.size()){
+        if(currentCapacity > this.parkPositions.size()){
+            while(currentCapacity > this.parkPositions.size()){
                 parkCar(new Car());
+
             }
         }
     }

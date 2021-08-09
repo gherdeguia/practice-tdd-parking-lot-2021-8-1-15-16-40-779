@@ -11,10 +11,10 @@ public class SuperSmartParkingBoy extends ParkingBoy {
 
     @Override
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
-        return findMoreSpaciousParkingLot().parkCar(car);
+        return findMoreSpaciousParkingLotRatio().parkCar(car);
     }
 
-    private ParkingLot findMoreSpaciousParkingLot() {
-        return this.parkingLots.stream().max(Comparator.comparing(ParkingLot::returnCurrentCapacityRatio)).get();
+    private ParkingLot findMoreSpaciousParkingLotRatio() {
+        return this.parkingLots.stream().min(Comparator.comparing(ParkingLot::returnCurrentCapacityRatio)).get();
     }
 }

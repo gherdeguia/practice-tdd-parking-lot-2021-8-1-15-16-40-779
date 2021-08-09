@@ -35,7 +35,7 @@ public class SmartParkingBoyTest {
                 Arrays.asList(
                         new ParkingLot(9,1)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
         Car secondCar = new Car();
 
@@ -58,7 +58,7 @@ public class SmartParkingBoyTest {
                 Arrays.asList(
                         new ParkingLot(9,1)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = smartStandardParkingBoy.parkCar(firstCar);
@@ -78,7 +78,7 @@ public class SmartParkingBoyTest {
                 Arrays.asList(
                         new ParkingLot(9,1)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = smartStandardParkingBoy.parkCar(firstCar);
@@ -98,7 +98,7 @@ public class SmartParkingBoyTest {
                 Arrays.asList(
                         new ParkingLot(9,9)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given
@@ -119,7 +119,7 @@ public class SmartParkingBoyTest {
                         new ParkingLot(10,0)
                 );
 
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car car = new Car();
 
         //given
@@ -137,7 +137,7 @@ public class SmartParkingBoyTest {
                         new ParkingLot(9,1),
                         new ParkingLot(10,0)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
         Car secondCar = new Car();
 
@@ -161,7 +161,7 @@ public class SmartParkingBoyTest {
                         new ParkingLot(10,10),
                         new ParkingLot(10,1)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given
@@ -180,7 +180,7 @@ public class SmartParkingBoyTest {
                         new ParkingLot(10,9),
                         new ParkingLot(10,1)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
         Car secondCar = new Car();
 
@@ -205,7 +205,7 @@ public class SmartParkingBoyTest {
                         new ParkingLot(10,9),
                         new ParkingLot(10,1)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = smartStandardParkingBoy.parkCar(firstCar);
@@ -226,7 +226,7 @@ public class SmartParkingBoyTest {
                         new ParkingLot(10,1),
                         new ParkingLot(10,5)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         ParkingTicket parkingTicket01 = smartStandardParkingBoy.parkCar(firstCar);
@@ -247,7 +247,7 @@ public class SmartParkingBoyTest {
                         new ParkingLot(10,10),
                         new ParkingLot(10,10)
                 );
-        StandardParkingBoy smartStandardParkingBoy = new StandardParkingBoy(parkingLots);
+        SmartParkingBoy smartStandardParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given

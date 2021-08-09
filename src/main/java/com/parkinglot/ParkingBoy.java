@@ -1,13 +1,11 @@
 package com.parkinglot;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
+
 
 public abstract class ParkingBoy {
     protected List<ParkingLot> parkingLots;
     public Car car;
-    private final Map<ParkingTicket, Car> parkPositions = new HashMap<>();
 
     public ParkingBoy(List<ParkingLot> parkingLots){ this.parkingLots = parkingLots; }
 
