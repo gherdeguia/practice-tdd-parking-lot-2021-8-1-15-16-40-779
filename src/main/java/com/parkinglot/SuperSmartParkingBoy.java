@@ -15,6 +15,6 @@ public class SuperSmartParkingBoy extends ParkingBoy {
     }
 
     private ParkingLot findMoreSpaciousParkingLotRatio() {
-        return this.parkingLots.stream().min(Comparator.comparing(ParkingLot::returnCurrentCapacityRatio)).get();
+        return this.parkingLots.stream().min(Comparator.comparingDouble(ParkingLot::returnCurrentCapacityRatio)).get();
     }
 }

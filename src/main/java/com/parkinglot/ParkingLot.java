@@ -13,12 +13,10 @@ public class ParkingLot {
 
     public ParkingLot() {
         this.maxCapacity = defaultCapacity;
-        this.currentCapacity = 0;
     }
 
     public ParkingLot(int maxCapacity, int currentCapacity) {
         this.maxCapacity = maxCapacity;
-//        this.currentCapacity = currentCapacity;
         this.autoFillCapacity(currentCapacity);
     }
 
@@ -53,11 +51,11 @@ public class ParkingLot {
     }
 
     int returnCurrentCapacity(){
-        return this.parkPositions.size();
+        return this.maxCapacity - this.parkPositions.size();
     }
 
-    int returnCurrentCapacityRatio(){
-        return this.parkPositions.size() / this.maxCapacity;
+    double returnCurrentCapacityRatio(){
+        return (double) this.parkPositions.size() / this.maxCapacity;
     }
 
     public void displayParkingCapacity(){
@@ -76,7 +74,6 @@ public class ParkingLot {
         if(currentCapacity > this.parkPositions.size()){
             while(currentCapacity > this.parkPositions.size()){
                 parkCar(new Car());
-
             }
         }
     }
