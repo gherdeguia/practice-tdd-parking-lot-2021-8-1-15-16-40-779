@@ -6,13 +6,13 @@ public class StandardParkingLotManager extends StandardParkingBoy {
 
     ManagementList managementList;
     StandardParkingBoy standardParkingBoys;
-    SmartStandardParkingBoy smartParkingBoy;
+    SmartParkingBoy smartParkingBoy;
 
     public StandardParkingLotManager(List<ParkingLot> parkingLots, ManagementList managementList) {
         super(parkingLots);
         this.managementList = managementList;
         this.standardParkingBoys = new StandardParkingBoy(parkingLots);
-        this.smartParkingBoy = new SmartStandardParkingBoy(parkingLots);
+        this.smartParkingBoy = new SmartParkingBoy(parkingLots);
     }
 
     public List<StandardParkingBoy> getParkingBoysList() {

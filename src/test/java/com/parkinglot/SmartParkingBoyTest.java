@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
-public class SmartStandardParkingBoyTest {
+public class SmartParkingBoyTest {
 
     @Test
     void should_return_parking_ticket_when_park_car_given_two_parking_lot_and_park_car_on_parking_lot_with_more_available_space() {
@@ -18,7 +18,7 @@ public class SmartStandardParkingBoyTest {
                         new ParkingLot(10,6),
                         new ParkingLot(10,1)
                 );
-        SmartStandardParkingBoy smartParkingBoy = new SmartStandardParkingBoy(parkingLots);
+        SmartParkingBoy smartParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given

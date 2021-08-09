@@ -8,7 +8,7 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
-public class SuperSmartStandardParkingBoyTest {
+public class SuperSmartParkingBoyTest {
     @Test
     void should_return_parking_ticket_when_park_car_given_two_parking_lot_and_park_car_on_parking_lot_with_more_available_space_ratio() {
         //when
@@ -36,7 +36,7 @@ public class SuperSmartStandardParkingBoyTest {
                         new ParkingLot(10,6),
                         new ParkingLot(10,1)
                 );
-        SmartStandardParkingBoy superSmartParkingBoy = new SmartStandardParkingBoy(parkingLots);
+        SmartParkingBoy superSmartParkingBoy = new SmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given

@@ -20,7 +20,7 @@ public class ParkingLotManagerTest {
                 );
         StandardParkingBoy standardParkingBoy1 = new StandardParkingBoy(parkingLotsA);
         StandardParkingBoy standardParkingBoy2 = new StandardParkingBoy(parkingLotsA);
-        SmartStandardParkingBoy smartParkingBoy1 = new SmartStandardParkingBoy(parkingLotsA);
+        SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLotsA);
 
         List<StandardParkingBoy> standardParkingBoys =
                 Arrays.asList(
