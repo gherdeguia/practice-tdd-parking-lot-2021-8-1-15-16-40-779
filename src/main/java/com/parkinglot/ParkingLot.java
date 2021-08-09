@@ -19,6 +19,7 @@ public class ParkingLot {
     public ParkingLot(int maxCapacity, int currentCapacity) {
         this.maxCapacity = maxCapacity;
         this.currentCapacity = currentCapacity;
+        autoFillCapacity(currentCapacity);
     }
 
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
@@ -71,5 +72,13 @@ public class ParkingLot {
 
     boolean findParkingTicketExists(ParkingTicket parkingTicket) {
         return this.parkPositions.containsKey(parkingTicket);
+    }
+
+    public void autoFillCapacity(int currentCapacity){
+        if(currentCapacity < this.parkPositions.size()){
+            while(currentCapacity < this.parkPositions.size()){
+                parkCar(new Car());
+            }
+        }
     }
 }
