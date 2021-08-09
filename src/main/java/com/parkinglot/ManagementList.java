@@ -6,17 +6,17 @@ import java.util.stream.Collectors;
 
 public class ManagementList {
 
-    private List<StandardParkingBoy> managementList;
+    private List<ParkingBoy> managementList;
 
-    public ManagementList(List<StandardParkingBoy> standardParkingBoys) {
+    public ManagementList(List<ParkingBoy> standardParkingBoys) {
         this.managementList = standardParkingBoys;
     }
 
-    public void addParkingBoy(StandardParkingBoy standardParkingBoy) {
+    public void addParkingBoy(SmartParkingBoy standardParkingBoy) {
 
     }
 
-    public List<StandardParkingBoy> getManagementList() {
+    public List<ParkingBoy> getManagementList() {
         return this.managementList.stream().collect(Collectors.toList());
     }
 }

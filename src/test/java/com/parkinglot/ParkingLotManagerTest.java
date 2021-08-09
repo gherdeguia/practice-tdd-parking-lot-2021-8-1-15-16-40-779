@@ -22,7 +22,7 @@ public class ParkingLotManagerTest {
         StandardParkingBoy standardParkingBoy2 = new StandardParkingBoy(parkingLotsA);
         SmartParkingBoy smartParkingBoy1 = new SmartParkingBoy(parkingLotsA);
 
-        List<StandardParkingBoy> standardParkingBoys =
+        List<ParkingBoy> standardParkingBoys =
                 Arrays.asList(
                         standardParkingBoy1,
                         standardParkingBoy2,
@@ -36,8 +36,8 @@ public class ParkingLotManagerTest {
         ManagementList managementList = new ManagementList(standardParkingBoys);
         managementList.addParkingBoy(smartParkingBoy1);
 
-        StandardParkingLotManager parkingLotManager = new StandardParkingLotManager(parkingLotsA, managementList);
-        List<StandardParkingBoy> managementStandardParkingBoyList = parkingLotManager.getParkingBoysList();
+        ParkingLotManager parkingLotManager = new ParkingLotManager(parkingLotsA, managementList);
+        List<ParkingBoy> managementStandardParkingBoyList = parkingLotManager.getParkingBoysList();
 
         ParkingTicket parkingTicket1 = parkingLotManager.parkCar(firstCar);
         ParkingTicket parkingTicket2 = parkingLotManager.makeParkingBoyPark(secondCar);
