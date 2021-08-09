@@ -18,8 +18,8 @@ public class ParkingLot {
 
     public ParkingLot(int maxCapacity, int currentCapacity) {
         this.maxCapacity = maxCapacity;
-        this.currentCapacity = currentCapacity;
-        autoFillCapacity(currentCapacity);
+//        this.currentCapacity = currentCapacity;
+        this.autoFillCapacity(currentCapacity);
     }
 
     public ParkingTicket parkCar(Car car) throws NoAvailablePositionException {
@@ -29,7 +29,6 @@ public class ParkingLot {
         ParkingTicket parkingTicket = new ParkingTicket();
         this.car = car;
         this.parkPositions.put(parkingTicket, car);
-        this.currentCapacity++;
         this.displayParkingCapacity();
         return parkingTicket;
 
@@ -41,25 +40,24 @@ public class ParkingLot {
         }
         this.car = this.parkPositions.get(parkingTicket);
         this.parkPositions.remove(parkingTicket);
-        this.currentCapacity--;
         this.displayParkingCapacity();
         return this.car;
     }
 
     boolean isFullParkingLotCapacity() {
-        return this.currentCapacity >= this.maxCapacity;
+        return this.parkPositions.size() >= this.maxCapacity;
     }
 
     boolean hasAvailableParkingSlot(){
-        return this.currentCapacity < this.maxCapacity;
+        return this.parkPositions.size() < this.maxCapacity;
     }
 
     int returnCurrentCapacity(){
-        return this.currentCapacity;
+        return this.parkPositions.size();
     }
 
     int returnCurrentCapacityRatio(){
-        return this.currentCapacity / this.maxCapacity;
+        return this.parkPositions.size() / this.maxCapacity;
     }
 
     public void displayParkingCapacity(){

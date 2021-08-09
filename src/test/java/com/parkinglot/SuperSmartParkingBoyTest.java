@@ -18,7 +18,7 @@ public class SuperSmartParkingBoyTest {
                         new ParkingLot(20,15)
                 );
 
-        SuperSmartStandardParkingBoy superSmartParkingBoy = new SuperSmartStandardParkingBoy(parkingLots);
+        SuperSmartParkingBoy superSmartParkingBoy = new SuperSmartParkingBoy(parkingLots);
         Car firstCar = new Car();
 
         //given
