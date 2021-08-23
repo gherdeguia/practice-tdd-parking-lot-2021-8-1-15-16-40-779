@@ -1,1 +1,12 @@
 language: java
+dist: trusty
+jdk:
+  - oraclejdk8
+before_script:
+  - "./gradlew test"
+script:
+  - "./gradlew build"
+deploy:
+  provider: heroku
+  api_key:
+    secure: ba912765-df3c-4d60-81ca-773f29f36e2c
